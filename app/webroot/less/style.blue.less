@@ -1,0 +1,63 @@
+@import "bootstrap.less";
+
+body, header, footer {	
+	background: #003d4c;
+}
+
+header {
+	&, h1 { line-height: 50px; }
+	h1 {
+		font-size: 24px;
+		margin: 0;
+		background: transparent;
+		float: left;
+	}
+	nav {
+		text-align: right;
+		li {
+			display: inline-block;
+			list-style: none;
+		}
+	}
+	a {
+		color: white;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #;
+	}
+}
+
+#content {
+	min-width: 800px;
+	h2 {
+		background: transparent;
+		padding-left: 170px;
+	}
+	div.form, div.index, div.view, table {
+		h2 {padding: 0;}
+		float: none;
+		width: auto;
+		margin-left: 150px;
+		.box-sizing();
+	}
+	.darker {
+		background: #e8e8e8;
+	}
+	input, textarea {
+		padding: 5px 1% !important;
+	}
+}
+.success, .message, .cake-error, p.error, .error-message {
+	margin: 0 100px 0 175px;
+}
+
+footer {
+	a {
+		color: white;
+		text-decoration: none;
+	}
+	a:hover {
+		//color: #;
+	}
+}

@@ -1,0 +1,26 @@
+@import "bootstrap.less";
+
+@bg: #fff;
+@link: #0000ff;
+@hover: #0000ff;
+@header: #000;
+@content: #fff;
+@text: #000;
+
+@import "style.less";
+
+header {
+	h1, a, a:hover {
+		color: black;
+	}
+}
+footer {
+	&, a, a:hover {
+		color: black;
+	}
+}
+
+.success, .message, .cake-error, p.error, .error-message {
+	#gradient > .vertical( @link, @hover ); //top, bottom
+	margin: 0 100px 0 175px;
+}

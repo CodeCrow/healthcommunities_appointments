@@ -1,0 +1,99 @@
+body {
+	background: @bg;
+	#content{
+		.box-shadow();
+		border-top: 1px solid darken(@bg,25%);
+		color: @text;
+		background: @content;
+		table { color:@text; }
+		a {
+			color: @link;
+		}
+		a:hover{
+			color: @hover;
+		}
+		.darker {
+			background-color: saturate(lighten(@bg,35%),10%);
+		}
+	}
+}
+header {
+	background: @bg;
+	&, h1 { line-height: 50px; }
+	h1 {
+		font-size: 24px;
+		margin: 0;
+		color: white;
+	}
+	a {
+		color: white;
+		text-decoration: none;
+	}
+	a:hover {
+		color: white;
+		text-decoration: underline;
+	}
+}
+footer {
+	background: transparent;
+	&, a, a:hover {
+		color: white;
+		text-decoration: none;
+	}
+}
+h2, fieldset legend {
+	color: @header;
+}
+.success, .message, .cake-error, p.error, .error-message {
+	#gradient > .vertical( @hover, @link ); //top, bottom
+	margin: 0 100px 0 175px;
+}
+form .submit input[type=submit] {
+	#gradient > .vertical( @bg, lighten(@bg, 5%) );
+	border-color: darken(@bg, 15%);
+}
+form .submit input[type=submit]:hover {
+	background: @bg;
+}
+
+#content{
+	input, textarea {
+		padding: 5px 1% !important;
+	}
+}
+
+.hidden {
+	visibility: hidden;
+	display: none;
+}
+
+
+/* Structure */
+header {	
+	h1 {
+		background: transparent;
+		float: left;
+	}
+	nav {
+		display:block;
+		text-align: right;
+		li {
+			display: inline-block;
+			list-style: none;
+		}
+	}
+}
+#content {
+	min-width: 800px;
+	h2 {
+		background: transparent;
+		padding-left: 170px;
+	}
+	div.form, div.index, div.view, table, div.users {
+		float: none;
+		width: auto;
+		margin-left: 150px;
+		.box-sizing();
+		h2 { padding: 0; }
+	}
+}
