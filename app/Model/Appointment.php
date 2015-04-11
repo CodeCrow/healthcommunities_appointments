@@ -21,26 +21,26 @@ class Appointment extends AppModel {
 		'address_1' => array(
 			'rule' => '/^[a-zA-Z0-9 .#-]+$/i',
 			'message' => '',
-			'required' => true,
-			'allowEmpty' => false
+			'required' => false,
+			'allowEmpty' => true
 		),
 		'city' => array(
 			'rule' => '/^[\D]+$/i',
 			'message' => 'Invalid city.',
-			'required' => true,
-			'allowEmpty' => false
+			'required' => false,
+			'allowEmpty' => true
 		),
 		'state' => array(
 			'rule' => '/^[a-zA-Z]{2}$/i',
 			'message' => 'State should be abbreviation; ex: NY, MA',
-			'required' => true,
-			'allowEmpty' => false
+			'required' => false,
+			'allowEmpty' => true
 		),
 		'zip_code' => array(
 			'rule' => '/^[\d -]{5,10}$/i',
 			'message' => 'Zip Code can only contain numbers, spaces or dashes.',
-			'required' => true,
-			'allowEmpty' => false
+			'required' => false,
+			'allowEmpty' => true
 		),
 		'phone' => array(
 			'rule' => '/^[\d]?.*[\d]{0,3}.*[\d]{3}.*[\d]{4}$/i',
@@ -51,18 +51,17 @@ class Appointment extends AppModel {
 		'date_of_birth' => array(
 			'rule' => 'date',
 			'message' => 'Must be valid date.',
-			'required' => true
+			'required' => false
 		),
 		'gender' => array(
-			'message' => 'Please choose a gender.',
 			'rule' => 'alphaNumeric',
-			'required' => true
+			'required' => false
 		),
 		'health_insurance' => array(
 			'message' => 'Please choose your health insurance.',
 			'rule' => '/^.*$/', // need a regex so it *'s the field.
-			'required' => true
-		)
+			'required' => false
+		),
     ); // */
     
     public function inPractice($appt, $user) {

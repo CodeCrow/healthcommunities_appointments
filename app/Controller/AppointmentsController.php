@@ -8,7 +8,7 @@ class AppointmentsController extends AppController {
 
 	public function beforeFilter() {
 	    parent::beforeFilter();
-        $this->Auth->allow('index','thankyou');
+        $this->Auth->allow('index','thankyou','contact');
 	}
 
 	public function beforeRender() {
@@ -142,7 +142,57 @@ class AppointmentsController extends AppController {
 	    	}
     	}
     }
-    
+    public function contact() {
+        $this->set('valid', true);
+        if (array_key_exists('name', $this->request->params)) {
+            $p = $this->Appointment->Practice->findBySlug( $this->request->params['name'] );
+            if (!$p){
+                $this->Session->setFlash(__($this->request->params['name'].' is not a valid practice.'));
+                $this->set('valid',false);
+            } else {
+                $this->set('practice', $p);
+                
+                // Add cross-domain JS security header to allow embedding forms on practice's website
+                if ( $p && array_key_exists('website', $p['Practice']) ) {
+                    $ws = $p['Practice']['website'];
+                    if ($ws){
+                        $ws = rtrim(Sanitize::clean($ws), '/\\');
+                        $this->response->header('Access-Control-Allow-Origin', $ws);
+                    }
+                }
+                
+            }
+        } else {
+            $this->set('valid',false);
+        }
+        if ($this->request->is('post')) {
+            $this->request->data['Appointment']['phone'] = $this->Appointment->parse_phone($this->request->data['Appointment']['phone']);
+            // var_dump($this->request->data['Appointment'],$_POST,$_SERVER["REMOTE_ADDR"]);
+            
+
+            // Your code here to handle a successful verification
+            $this->Appointment->create();
+            if ($this->Appointment->save($this->request->data)) {
+                $this->Session->setFlash(__('The request has been saved'));
+                $email = $this->Appointment->Practice->find('first', array(
+                    'conditions' => array(
+                        'id' => $this->request->data['Appointment']['practice_id']
+                    )
+                ));
+                if (!empty($email['Practice']['email'])){
+                    echo "Email to: ".$email['Practice']['email'];
+                    $mail = new CakeEmail();
+                    $mail->from(array('noreply@healthcommunities-appointments.com' => 'Appointment Request'))
+                        ->to($email['Practice']['email'])
+                        ->subject('Appointment Request Notification')
+                        ->send("An appointment request has been made through your website and needs your attention. To view the request, please log in to the Appointment Request Tool: https://www.healthcommunities-appointments.com/users/login");
+                }
+                $this->redirect('/app/thankyou');
+            } else {
+                $this->Session->setFlash(__('The request could not be saved. Please, try again.'));
+            }
+        }
+    }
     public function view($id = null) {
 	    $this->helpers[] = 'Time';
         $this->Appointment->id = $id;

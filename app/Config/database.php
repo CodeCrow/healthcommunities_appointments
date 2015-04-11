@@ -62,9 +62,9 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'mysql2.healthcommunities-appointments.com',
-		'login' => 'hc_appt_user_2',
-		'password' => 'jnTFyu6A@',
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => 'ravendata',
 		'database' => 'hc_appointment_2',
 		'prefix' => '',
 		//'encoding' => 'utf8',

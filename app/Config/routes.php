@@ -27,6 +27,7 @@
 	Router::connect('/', array('controller' => 'appointments', 'action' => 'index'));
 	Router::connect('/admin', array('controller' => 'appointments', 'action' => 'admin'));
 	Router::connect('/thankyou', array('controller' => 'appointments', 'action' => 'thankyou'));
+    Router::connect('/app/:name/contact', array('controller' => 'appointments', 'action' => 'contact'));
 	Router::connect('/app/:name', array('controller' => 'appointments', 'action' => 'index'), array('name'=>'[a-zA-Z0-9\-]+'));
 	Router::connect('/app/:name/thankyou', array('controller' => 'appointments', 'action' => 'thankyou'), array('name'=>'[a-zA-Z0-9\-]+'));
 	Router::connect('/appointments/view/:print/*', array('controller' => 'appointments', 'action' => 'view'), array('print'=>'print'));
