@@ -53,6 +53,7 @@
 			echo $this->Form->input( 'preferred_provider', array( 'options' => $physicians, 'div' => array( 'class'=>'pp input text' ) ) );
 		}
 		echo $this->Form->input( 'preferred_time', array( 'div' => array( 'class'=>'pt input text' ) ) );
+		echo $this->Form->input( 'additional_info', array( 'div' => array( 'class'=>'pt input text' ), 'label' => 'How can we help?' ) );
 
 		echo $this->Form->input('practice_id', array('type' => 'hidden','value'=>$practice['Practice']['id']));
 	?>	

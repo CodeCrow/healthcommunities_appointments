@@ -62,6 +62,7 @@ class Appointment extends AppModel {
 			'rule' => '/^.*$/', // need a regex so it *'s the field.
 			'required' => false
 		),
+
     ); // */
     
     public function inPractice($appt, $user) {

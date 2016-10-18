@@ -29,6 +29,7 @@
 		array('Health Insurance (Other)', $a['health_ins_other']),
 		array('Phone', $a['phone']),
 		array('Time to call', $a['time_to_call']),
+		array('How can we help?', $a['additional_info']),
 		array('Preferred Provider', $a['preferred_provider']),
 		array('Preferred Time', $a['preferred_time']),
 	);
